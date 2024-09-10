@@ -1,115 +1,56 @@
-import React, { useState } from "react";
+import React from 'react';
+import { Button } from '@mui/material';
+import "./NotificationCenter.css"
 
-const NotificationCenter = () => {
-    // 알림 데이터
-    const [notifications, setNotifications] = useState([
-        {
-            id: 1,
-            ipAddress: "127.0.0.1",
-        },
-        {
-            id: 2,
-            ipAddress: "0.0.0.0",
-        },
-        // {
-        //     id: 1,
-        //     ipAddress: "127.0.0.1",
-        // },
-        // {
-        //     id: 2,
-        //     ipAddress: "0.0.0.0",
-        // },
-        // {
-        //     id: 1,
-        //     ipAddress: "127.0.0.1",
-        // },
-        // {
-        //     id: 2,
-        //     ipAddress: "0.0.0.0",
-        // },
-        // {
-        //     id: 1,
-        //     ipAddress: "127.0.0.1",
-        // },
-        // {
-        //     id: 2,
-        //     ipAddress: "0.0.0.0",
-        // },
-    ]);
+function NotificationCenter({ trafficData }) {
+    // 비정상적인 데이터 필터링
+    const abnormalData = trafficData
+        ? trafficData.filter(item => item.judge === "비정상")
+        : [];
 
-    // Confirm 버튼을 눌렀을 때 처리
-    const handleConfirm = (id) => {
-        setNotifications(notifications.filter((notification) => notification.id !== id));
-        alert("Confirmed!");
+    const handleAccess = (ip) => {
+        console.log(`Access granted for IP: ${ip}`);
     };
 
-    // Delete 버튼을 눌렀을 때 처리
-    const handleDelete = (id) => {
-        setNotifications(notifications.filter((notification) => notification.id !== id));
-        alert("Blocked!");
+    const handleBlock = (ip) => {
+        console.log(`Blocked IP: ${ip}`);
     };
 
     return (
-        <div style={{ padding: "20px", maxWidth: "400px", margin: "auto" }}>
-            <h2>Notifications</h2>
-            {notifications.length === 0 ? (
-                <p>No new notifications</p>
-            ) : (
-                notifications.map((notification) => (
-                    <div
-                        key={notification.id}
-                        style={{
-                            display: "flex",
-                            alignItems: "center",
-                            justifyContent: "space-between",
-                            marginBottom: "10px",
-                            padding: "10px",
-                            border: "1px solid #ddd",
-                            borderRadius: "8px",
-                        }}
-                    >
-                        <div style={{ display: "flex", alignItems: "center" }}>
-                            <div>
-                                <p style={{ margin: 0 }}>
-                                    <strong>{notification.ipAddress}</strong> Try to access
-                                </p>
-                                <span style={{ fontSize: "12px", color: "#999" }}>{notification.time}</span>
-                            </div>
-                        </div>
+        <div className="notification-container">
+            {abnormalData.length > 0 ? (
+                abnormalData.map((item, index) => (
+                    <div key={index} className="notification">
                         <div>
-                            <button
-                                onClick={() => handleConfirm(notification.id)}
-                                style={{
-                                    backgroundColor: "#007bff",
-                                    color: "white",
-                                    border: "none",
-                                    padding: "5px 10px",
-                                    borderRadius: "5px",
-                                    marginRight: "5px",
-                                    cursor: "pointer",
-                                }}
+                            <strong>{item.ip}</strong> Try to access <br />
+                            Time: {item.time} <br />
+                            Protocol: {item.protocol}
+                        </div>
+                        <div className="notification-actions">
+                            <Button
+                                variant="contained"
+                                color="primary"
+                                size="small"
+                                onClick={() => handleAccess(item.ip)}
                             >
                                 Access
-                            </button>
-                            <button
-                                onClick={() => handleDelete(notification.id)}
-                                style={{
-                                    backgroundColor: "#ccc",
-                                    color: "black",
-                                    border: "none",
-                                    padding: "5px 10px",
-                                    borderRadius: "5px",
-                                    cursor: "pointer",
-                                }}
+                            </Button>
+                            <Button
+                                variant="contained"
+                                color="secondary"
+                                size="small"
+                                onClick={() => handleBlock(item.ip)}
                             >
                                 Block
-                            </button>
+                            </Button>
                         </div>
                     </div>
                 ))
+            ) : (
+                <p>No abnormal access attempts</p>
             )}
         </div>
     );
-};
+}
 
 export default NotificationCenter;

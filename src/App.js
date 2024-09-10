@@ -24,14 +24,14 @@ function App() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('https://99ff-115-92-127-144.ngrok-free.app/test/', {
+        const response = await axios.get('https://6ee3-115-92-127-144.ngrok-free.app/traffic/', {
           headers: {
             'ngrok-skip-browser-warning': '69420',  // 헤더 추가
             'Accept': 'application/json' // 서버에 JSON 응답을 요청
           },
         });
         // for (const key in Object.keys(data)) {
-        //   console.log(data[key].name)
+        //   console.log(data[key].ip)
         // }
         setData(response.data);
         console.log(data)

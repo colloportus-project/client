@@ -36,10 +36,16 @@ export default function TrafficMonitor({ trafficData }) { // 기본값을 빈 �
                             <TableRow key={index}>
                                 {/* row 전체 데이터를 가시적으로 확인 */}
                                 <TableCell colSpan={4}> {/* 테이블의 전체 열에 데이터를 출력 */}
-                                    <pre>{JSON.stringify(row._id, null, 2)}</pre> {/* JSON 형식으로 row 데이터를 출력 */}
-                                </TableCell>
-                                <TableCell colSpan={4}> {/* 테이블의 전체 열에 데이터를 출력 */}
-                                    <pre>{JSON.stringify(row.name, null, 2)}</pre> {/* JSON 형식으로 row 데이터를 출력 */}
+                                    <pre>{row.ip}</pre>
+                                    <pre>{JSON.stringify(row.ip, null, 2)}</pre>
+                                    <pre>{row.tf}</pre>
+                                    <pre>{row.time}</pre>
+                                    <pre>{row.packet_size}</pre>
+                                    {/* <pre>{JSON.stringify(row.tf, null, 2)}</pre> JSON 형식으로 row 데이터를 출력 */}
+                                    {/* </TableCell> */}
+                                    {/* <TableCell colSpan={4}> 테이블의 전체 열에 데이터를 출력 */}
+                                    {/* <pre>{JSON.stringify(row.time, null, 2)}</pre> JSON 형식으로 row 데이터를 출력 */}
+                                    {/* <pre>{JSON.stringify(row.packet_size, null, 2)}</pre> JSON 형식으로 row 데이터를 출력 */}
                                 </TableCell>
                             </TableRow>
                         ))}
@@ -54,14 +60,14 @@ export default function TrafficMonitor({ trafficData }) { // 기본값을 빈 �
                                     key={index}
                                     sx={{ height: '50px', '&:last-child td, &:last-child th': { border: 0 } }} // 각 행의 높이 줄이기
                                 >
-                                    <TableCell>
+                                    {/* <TableCell>
                                         <pre>{JSON.stringify(row, null, 2)}</pre> {/* row 전체 데이터를 출력 */}
-                                    </TableCell>
+                                    {/* </TableCell> */} */}
                                     <TableCell component="th" scope="row" sx={{ paddingTop: '4px', paddingBottom: '4px', minWidth: 50 }}>
-                                        {row.name}
+                                        {row.ip}
                                     </TableCell>
                                     <TableCell align="center">
-                                        {row.status === "Normal" ? (
+                                        {row.tf === 1 ? ( // 정상
                                             <span style={{
                                                 border: '0.3px solid #4caf50',
                                                 backgroundColor: '#e8f5e9', // 파란색 배경
@@ -70,9 +76,9 @@ export default function TrafficMonitor({ trafficData }) { // 기본값을 빈 �
                                                 borderRadius: '15px', // 둥근 모서리
                                                 display: 'inline-block', // 크기 조정
                                             }}>
-                                                {row.status}
+                                                {row.tf}
                                             </span>
-                                        ) : row.status === "Abnormal" ? (
+                                        ) : row.status === 0 ? (    // 비정상
                                             <span style={{
                                                 border: '0.3px solid #f44336',
                                                 backgroundColor: '#ffebee', // 빨간색 배경
@@ -81,14 +87,14 @@ export default function TrafficMonitor({ trafficData }) { // 기본값을 빈 �
                                                 borderRadius: '15px', // 둥근 모서리
                                                 display: 'inline-block',
                                             }}>
-                                                {row.status}
+                                                {row.tf}
                                             </span>
                                         ) : (
-                                            row.status
+                                            row.tf
                                         )}
                                     </TableCell>
-                                    <TableCell align="center" sx={{ paddingTop: '4px', paddingBottom: '4px', minWidth: 100 }}>{row.dateTime}</TableCell>
-                                    <TableCell align="center" sx={{ paddingTop: '4px', paddingBottom: '4px', minWidth: 50 }}>{row.packetSize}</TableCell>
+                                    <TableCell align="center" sx={{ paddingTop: '4px', paddingBottom: '4px', minWidth: 100 }}>{row.time}</TableCell>
+                                    <TableCell align="center" sx={{ paddingTop: '4px', paddingBottom: '4px', minWidth: 50 }}>{row.packet_size}</TableCell>
                                 </TableRow>
                             ))
                         ) : (

@@ -31,8 +31,9 @@ function App() {
           },
         });
         // for (const key in Object.keys(data)) {
-        //   console.log(data[key].ip)
+        //   console.log(data[key].name)
         // }
+        console.log("response: ", response);
         setData(response.data);
         console.log(data)
       } catch (error) {

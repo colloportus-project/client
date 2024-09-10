@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button } from '@mui/material';
-import "./NotificationCenter.css"
+// import "./NotificationCenter.css"
 
 function NotificationCenter({ trafficData }) {
     // 비정상적인 데이터 필터링
@@ -33,7 +33,7 @@ function NotificationCenter({ trafficData }) {
                                 size="small"
                                 onClick={() => handleAccess(item.ip)}
                             >
-                                Access
+                                Accept
                             </Button>
                             <Button
                                 variant="contained"

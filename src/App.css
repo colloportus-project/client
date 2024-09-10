@@ -1,0 +1,65 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* 기본적으로 화면이 충분히 큰 경우(예: 데스크탑)에는 1/3씩 차지 */
+@media (min-width: 1024px) {
+  .flex-item {
+    flex-basis: 33.33%;
+  }
+}
+
+/* 화면이 중간 크기인 경우(태블릿)에는 50%씩 차지 */
+@media (max-width: 1023px) and (min-width: 768px) {
+  .flex-item {
+    flex-basis: 50%;
+  }
+}
+
+/* 화면이 작은 경우(모바일)에는 100%씩 차지하여 세로로 배치 */
+@media (max-width: 767px) {
+  .flex-item {
+    flex-basis: 100%;
+  }
+}
+
+/* App.css 또는 스타일시트 파일에 추가 */
+/* .leaflet-routing-container {
+  display: none !important;
+} */
+

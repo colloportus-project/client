@@ -1,15 +1,11 @@
-import logo from './logo.svg';
 import React, { useEffect, useState } from 'react';
-import ReactDOM from 'react-dom';
 import './App.css';
 import Rechart from "./Rechart";
 import TrafficMonitor from "./TrafficMonitor";
 import { ThemeProvider, createTheme } from '@mui/material/styles';
-import CssBaseline from '@mui/material/CssBaseline'; // MUI 기본 스타일 초기화
 import MyMap from "./Map";
 import NotificationCenter from './NotificationCenter';
 import axios from 'axios';
-import { Table } from '@mui/material';
 
 function App() {
   // 테마 설정
@@ -19,36 +15,49 @@ function App() {
     },
   });
 
-  const [data, setData] = useState(null);
+  const [trafficData, setTraffic] = useState(null);
+  const [jammingData, setJamming] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('https://6ee3-115-92-127-144.ngrok-free.app/traffic/', {
+        // /traffic/ 데이터 가져오기
+        const trafficResponse = await axios.get('https://246e-115-92-127-144.ngrok-free.app/traffic/', {
           headers: {
-            'ngrok-skip-browser-warning': '69420',  // 헤더 추가
-            'Accept': 'application/json' // 서버에 JSON 응답을 요청
+            'ngrok-skip-browser-warning': '69420',
+            'Accept': 'application/json'
           },
         });
-        // for (const key in Object.keys(data)) {
-        //   console.log(data[key].name)
-        // }
-        console.log("response: ", response);
-        setData(response.data);
-        console.log(data)
+
+        setTraffic(trafficResponse.data);
+
+        // /jamming/ 데이터 가져오기
+        const jammingResponse = await axios.get('https://246e-115-92-127-144.ngrok-free.app/jamming/', {
+          headers: {
+            'ngrok-skip-browser-warning': '69420',
+            'Accept': 'application/json'
+          },
+        });
+
+        setJamming(jammingResponse.data);
+
       } catch (error) {
         console.error('API 요청 오류:', error);
       }
     };
 
-    fetchData(); // 함수 실행
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    // 데이터 새로고침을 1초마다 실행
+    const interval = setInterval(fetchData, 5000);
+
+    // 컴포넌트 언마운트 시 setInterval 정리
+    return () => clearInterval(interval);
   }, []);
 
   return (
     <div>
       <div>
-        {/* {data ? <pre>{JSON.stringify(data, null, 2)}</pre> : <p>Loading...</p>} */}
+        {/* {trafficData ? <pre>{JSON.stringify(trafficData, null, 2)}</pre> : <p>Loading traffic data...</p>} */}
+        {/* {jammingData ? <pre>{JSON.stringify(jammingData, null, 2)}</pre> : <p>Loading jamming data...</p>} */}
       </div>
       <div
         style={{
@@ -63,17 +72,17 @@ function App() {
       >
         <div style={{ width: '33.33%', height: 400 }}>
           <ThemeProvider theme={theme}>
-            <TrafficMonitor trafficData={data} />
+            <TrafficMonitor trafficData={trafficData} />
           </ThemeProvider>
         </div>
-        <div style={{ width: '33.33%', height: 400 }}> {/* MyMap을 더 크게 */}
-          <Rechart />
-          <div style={{ height: 800, width: '100%' }}> {/* MyMap의 높이 조정 */}
+        <div style={{ width: '33.33%', height: 400 }}>
+          <Rechart jammingData={jammingData} />
+          <div style={{ height: 800, width: '100%' }}>
             <MyMap />
           </div>
         </div>
         <div style={{ width: '33.33%', height: 400 }}>
-          <NotificationCenter />
+          <NotificationCenter trafficData={trafficData} />
         </div>
       </div>
     </div>
@@ -81,4 +90,3 @@ function App() {
 }
 
 export default App;
-

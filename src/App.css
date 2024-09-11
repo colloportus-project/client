@@ -4,8 +4,10 @@
   width: 100%;
   justify-content: space-between;
   padding: 20px;
-  background-color: #1e1e2f; /* Dark but clean background */
-  color: #e0e0e0; /* Lighter text for better readability */
+  background-color: #1b1e2f;
+  /* Dark background */
+  color: #ffffff;
+  /* Light text */
   box-sizing: border-box;
 }
 
@@ -13,10 +15,11 @@
 .flex-item {
   flex-basis: 33.33%;
   padding: 20px;
-  background: #232336; /* Slightly darker panels */
-  border: 1px solid #38384f;
+  background: #22263a;
+  /* Dark panel background */
+  border: none;
   border-radius: 10px;
-  box-shadow: 0px 0px 10px rgba(0, 255, 255, 0.1); /* Soft, minimal glow */
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
   box-sizing: border-box;
 }
 
@@ -31,10 +34,10 @@
 .map-container {
   height: 400px;
   width: 100%;
-  background: #1b2330;
+  background: #1f2336;
   border-radius: 8px;
-  border: 1px solid #38384f;
-  box-shadow: 0px 0px 5px rgba(0, 0, 255, 0.1); /* Minimal blue glow */
+  box-sizing: border-box;
+  border: 1px solid #3e4559;
 }
 
 @media (max-width: 1023px) {
@@ -42,4 +45,96 @@
     flex-basis: 100%;
     margin-bottom: 20px;
   }
+}
+
+/* For Titles */
+h3 {
+  color: #86c8f7;
+  /* Light blue for titles */
+  font-weight: bold;
+  font-size: 1.4em;
+}
+
+/* Table inside TrafficMonitor */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #272c44;
+  /* Dark background for table */
+  color: #ffffff;
+  /* Light text for the table */
+}
+
+th,
+td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #3f455e;
+}
+
+th {
+  background-color: #323750;
+  color: #a1e1f4 !important;
+  /* Light blue headers */
+  font-size: 14px;
+  font-weight: 600;
+}
+
+td {
+  color: #dfe6ef !important;
+  /* Light text for table data */
+  font-size: 13px;
+  background-color: #2a3145;
+}
+
+/* Hover effect for rows */
+tr:hover {
+  background-color: #374062;
+}
+
+/* Notification Container */
+.notification-container {
+  background-color: #252a40;
+  padding: 15px;
+  border-radius: 10px;
+  color: #ffffff;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+}
+
+.notification {
+  padding: 15px;
+  margin-bottom: 10px;
+  background-color: #2d344b;
+  border: 1px solid #3c4559;
+  border-radius: 8px;
+}
+
+/* Access/Block buttons */
+.notification-actions button {
+  border-radius: 5px;
+  padding: 6px 16px;
+  text-transform: uppercase;
+  font-weight: bold;
+  margin-right: 8px;
+  font-size: 14px;
+}
+
+.notification-actions .MuiButton-containedPrimary {
+  background-color: #31c6f5;
+  /* Light blue */
+  color: white;
+}
+
+.notification-actions .MuiButton-containedPrimary:hover {
+  background-color: #2393c9;
+}
+
+.notification-actions .MuiButton-containedSecondary {
+  background-color: #f56331;
+  /* Light orange */
+  color: white;
+}
+
+.notification-actions .MuiButton-containedSecondary:hover {
+  background-color: #c94d23;
 }

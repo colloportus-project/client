@@ -43,7 +43,32 @@ export default function TrafficMonitor({ trafficData }) {
                             reversedData.map((row, index) => (
                                 <TableRow key={index}>
                                     <TableCell>{row.ip}</TableCell>
-                                    <TableCell align="center">{row.judge}</TableCell>
+                                    <TableCell align="center">
+                                        {row.judge === "정상" ? (
+                                            <span style={{
+                                                // border: '0.3px solid #4caf50',
+                                                // backgroundColor: '#e8f5e9', // 파란색 배경
+                                                color: '#4caf50',
+                                                // padding: '3px 10px', // 안쪽 여백
+                                                // borderRadius: '15px', // 둥근 모서리
+                                                // display: 'inline-block', // 크기 조정
+                                            }}>
+                                                {row.judge}
+                                            </span>
+                                        ) : row.judge === "비정상" ? (
+                                            <span style={{
+                                                // border: '0.3px solid #f44336',
+                                                // backgroundColor: '#ffebee', // 빨간색 배경
+                                                color: '#f44336', // 흰색 텍스트
+                                                // padding: '3px 10px', // 안쪽 여백
+                                                // borderRadius: '15px', // 둥근 모서리
+                                                display: 'inline-block',
+                                            }}>
+                                                {row.judge}
+                                            </span>
+                                        ) : (
+                                            row.judge
+                                        )}</TableCell>
                                     <TableCell align="center">{row.time}</TableCell>
                                     <TableCell align="center">{row.size}</TableCell>
                                 </TableRow>

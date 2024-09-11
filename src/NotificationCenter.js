@@ -57,6 +57,7 @@ function NotificationCenter({ trafficData }) {
 
     return (
         <div className="notification-container">
+            <h3>Warning Notification</h3>
             {abnormalData.length > 0 ? (
                 abnormalData.map((item, index) => (
                     <div key={index} className="notification">
@@ -68,50 +69,52 @@ function NotificationCenter({ trafficData }) {
                             )}
                             <div className={`content ${responseMessages[item.ip] ? 'hidden' : ''}`}>
                                 <div>
-                                    <strong>{item.ip}</strong> Try to access <br />
+                                    <strong>IP: {item.ip}</strong>  <br />
                                     Time: {item.time} <br />
                                     Protocol: {item.protocol}
                                 </div>
                                 <div className="notification-actions">
-                                    <Button
-                                        variant="contained"
-                                        color="primary"
-                                        size="small"
-                                        onClick={() => handleAccess(item.ip)}
-                                        sx={{
-                                            borderRadius: '8px',
-                                            backgroundColor: '#2d73f5',
-                                            textTransform: 'none',
-                                            boxShadow: 'none',
-                                            padding: '6px 16px',
-                                            fontSize: '14px',
-                                            '&:hover': {
-                                                backgroundColor: '#1a5dc4'
-                                            }
-                                        }}
-                                    >
-                                        Access
-                                    </Button>
-                                    <Button
-                                        variant="contained"
-                                        color="secondary"
-                                        size="small"
-                                        onClick={() => handleBlock(item.ip)}
-                                        sx={{
-                                            borderRadius: '8px',
-                                            backgroundColor: '#e0e0e0',
-                                            color: 'black',
-                                            textTransform: 'none',
-                                            boxShadow: 'none',
-                                            padding: '6px 16px',
-                                            fontSize: '14px',
-                                            '&:hover': {
-                                                backgroundColor: '#bdbdbd'
-                                            }
-                                        }}
-                                    >
-                                        Block
-                                    </Button>
+                                    <div className= "btn">
+                                        <Button
+                                            variant="contained"
+                                            color="primary"
+                                            size="small"
+                                            onClick={() => handleAccess(item.ip)}
+                                            sx={{
+                                                borderRadius: '8px',
+                                                backgroundColor: '#2d73f5',
+                                                textTransform: 'none',
+                                                boxShadow: 'none',
+                                                padding: '6px 16px',
+                                                fontSize: '14px',
+                                                '&:hover': {
+                                                    backgroundColor: '#1a5dc4'
+                                                }
+                                            }}
+                                        >
+                                            Access
+                                        </Button>
+                                        <Button
+                                            variant="contained"
+                                            color="secondary"
+                                            size="small"
+                                            onClick={() => handleBlock(item.ip)}
+                                            sx={{
+                                                borderRadius: '8px',
+                                                backgroundColor: '#e0e0e0',
+                                                color: 'black',
+                                                textTransform: 'none',
+                                                boxShadow: 'none',
+                                                padding: '6px 16px',
+                                                fontSize: '14px',
+                                                '&:hover': {
+                                                    backgroundColor: '#bdbdbd'
+                                                }
+                                            }}
+                                        >
+                                            Block
+                                        </Button>
+                                    </div>
                                 </div>
                             </div>
                         </div>

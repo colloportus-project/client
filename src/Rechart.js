@@ -1,5 +1,20 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, Scatter } from 'recharts';
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+
+// Custom Dot Function to show only for abnormal points
+const renderAbnormalDot = (props) => {
+    const { cx, cy, payload } = props;
+
+    // Render a red dot only if the current data point is "abnormal" (prediction === -1)
+    if (payload.prediction === -1) {
+        return (
+            <circle cx={cx} cy={cy} r={5} fill="red" stroke="none" />
+        );
+    }
+
+    // Return null to not render dots for normal data points
+    return null;
+};
 
 function Rechart({ jammingData }) {
     const [data, setData] = useState([]);
@@ -30,6 +45,7 @@ function Rechart({ jammingData }) {
 
     return (
         <ResponsiveContainer width="100%" height={500}>
+            <h3>Jamming Chart</h3>
             <LineChart data={data}>
                 <CartesianGrid strokeDasharray="3 3" />
                 <XAxis dataKey="timestamp" />
@@ -37,38 +53,24 @@ function Rechart({ jammingData }) {
                 <Tooltip />
                 <Legend />
 
-                {/* Signal Strength Line without jumpy animations */}
+                {/* Signal Strength Line with conditional abnormal dots */}
                 <Line
+                    strokeWidth={3}
                     type="monotone"
                     dataKey="signal_strength"
-                    stroke="#8884d8"
-                    dot={false}
+                    stroke="#2E9AFE"
+                    dot={renderAbnormalDot} // Use custom dot rendering
                     isAnimationActive={false} // Disable animation to prevent jumping
                 />
 
-                {/* Noise Level Line without jumpy animations */}
+                {/* Noise Level Line with conditional abnormal dots */}
                 <Line
+                    strokeWidth={3}
                     type="monotone"
                     dataKey="noise_level"
-                    stroke="#82ca9d"
-                    dot={false}
+                    stroke="#DA81F5"
+                    dot={renderAbnormalDot} // Use custom dot rendering
                     isAnimationActive={false} // Disable animation to prevent jumping
-                />
-
-                {/* Scatter points for abnormal data */}
-                <Scatter
-                    data={data.filter((entry) => entry.prediction === -1)}
-                    fill="red"
-                    shape="circle"
-                    dataKey="signal_strength"
-                    name="Abnormal Data"
-                />
-                <Scatter
-                    data={data.filter((entry) => entry.prediction === -1)}
-                    fill="red"
-                    shape="circle"
-                    dataKey="noise_level"
-                    name="Abnormal Data"
                 />
             </LineChart>
         </ResponsiveContainer>

@@ -1,19 +1,25 @@
 .notification-container {
-    background-color: #2a2a3d;
+    background-color: #252a40;
+    /* Dark container background */
     padding: 15px;
-    border-radius: 8px;
-    box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.1);
-    /* Subtle glow */
+    border-radius: 10px;
     color: #ffffff;
+    /* Light text */
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+    /* Soft shadow */
 }
 
 .notification {
+    width: 450px;
     padding: 15px;
+    /* width: 100%; */
     margin-bottom: 10px;
-    background-color: #2d2d42;
-    border: 1px solid #3c3c50;
+    background-color: #2d344b;
+    /* Darker notification background */
+    border: 1px solid #3c4559;
+    /* Light border */
     border-radius: 8px;
-    box-shadow: none;
+    /* display: flex; */
 }
 
 /* Access/Block buttons */
@@ -24,26 +30,44 @@
     font-weight: bold;
     margin-right: 8px;
     font-size: 14px;
-    letter-spacing: 0.5px;
-    box-shadow: none;
 }
 
 .notification-actions .MuiButton-containedPrimary {
-    background-color: #2d73f5;
+    background-color: #82ca9d;
     /* Light blue */
     color: white;
+    box-shadow: none;
 }
 
 .notification-actions .MuiButton-containedPrimary:hover {
-    background-color: #1a5dc4;
+    background-color: #82ca9d;
+    /* Darker blue on hover */
 }
 
 .notification-actions .MuiButton-containedSecondary {
-    background-color: #bdbdbd;
-    /* Subtle gray for the block button */
-    color: black;
+    background-color: #FA5882;
+    /* Light orange */
+    color: white;
+    box-shadow: none;
 }
 
 .notification-actions .MuiButton-containedSecondary:hover {
-    background-color: #9c9c9c;
+    background-color: #FA5882;
+    /* Darker orange on hover */
+}
+
+/* Text for Notifications */
+strong {
+    color: #31c6f5;
+    /* Blue highlight for IP */
+}
+
+.notification p {
+    margin: 0;
+    color: #a1e1f4;
+    /* Light blue for notification text */
+}
+
+.btn {
+    margin-left: 55px;
 }

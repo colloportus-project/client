@@ -6,39 +6,42 @@ div {
 table {
     width: 100%;
     border-collapse: collapse;
-    background-color: #20202e;
+    background-color: #151a29;
     /* Darker panel background */
     border: 1px solid #38384f;
-    box-shadow: none;
-    /* Removing excessive glow */
-}
-
-h3 {
+    /* Light border */
     color: #ffffff;
-}
-/* Table Header (th) */
-th {
-    background-color: #29293b;
-    color: #ffffff !important;
-    /* Force white text for the table headers */
-    padding: 10px;
-    text-align: left;
-    border-bottom: 1px solid #454560;
+    /* White text for better readability */
 }
 
-/* Table Data (td) */
+th,
 td {
-    background-color: #252535;
-    color: #ffffff !important;
-    /* Force white text for table data cells */
-    padding: 10px;
+    padding: 12px;
     text-align: left;
     border-bottom: 1px solid #454560;
+    /* Subtle row separation */
 }
 
-/* Glow hover effect for rows */
+th {
+    background-color: #323750;
+    /* Dark header background */
+    color: #86c8f7;
+    /* Light blue headers */
+    font-size: 14px;
+    font-weight: 600;
+}
+
+td {
+    background-color: #20202e;
+    /* Darker table row background */
+    color: #dfe6ef;
+    /* Light text */
+    font-size: 13px;
+}
+
+/* Hover effect for rows */
 tr:hover {
-    background-color: #30304b;
-    color: #ffffff !important;
-    /* Ensure white text even on hover */
+    background-color: #374062;
+    /* Slightly brighter background on hover */
+    color: #ffffff;
 }

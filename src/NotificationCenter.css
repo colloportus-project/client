@@ -1,5 +1,9 @@
 .notification-container {
     padding: 10px;
+    min-height: 200px; /* Ensures space is reserved even if there's no content */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
 }
 
 .notification {
@@ -43,7 +47,16 @@
     transition: opacity 0.2s ease;
 }
 
-/* Optional: Add some fading effect */
-.response-message-overlay.hidden {
-    opacity: 0; /* Hide the overlay */
+.placeholder {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    min-height: 100px; /* Ensures the height remains consistent */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #888;
+    font-size: 16px;
 }

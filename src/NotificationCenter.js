@@ -20,14 +20,13 @@ function NotificationCenter({ trafficData }) {
                 [ip]: message
             }));
 
-            // Remove the message and show the original content exactly after 2.8 seconds
             setTimeout(() => {
                 setResponseMessages(prevMessages => {
                     const newMessages = { ...prevMessages };
                     delete newMessages[ip];  // Remove the message for this IP
                     return newMessages;
                 });
-            }, 2800); // Slightly before the full 3 seconds for smooth transition
+            }, 2800);
         } catch (error) {
             console.error(`Error sending ${action} request for IP: ${ip}`, error);
 
@@ -42,7 +41,7 @@ function NotificationCenter({ trafficData }) {
                     delete newMessages[ip];  // Remove the error message for this IP
                     return newMessages;
                 });
-            }, 2800); // Match the exact time for both transitions
+            }, 2800);
         }
     };
 
@@ -96,7 +95,10 @@ function NotificationCenter({ trafficData }) {
                     </div>
                 ))
             ) : (
-                <p>No abnormal access attempts</p>
+                // Placeholder when there's no data
+                <div className="placeholder">
+                    <p>No abnormal access attempts</p>
+                </div>
             )}
         </div>
     );

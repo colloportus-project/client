@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
 import { Button } from '@mui/material';
 import axios from 'axios';
+import './NotificationCenter.css'; // Import custom CSS for overlay
 
 function NotificationCenter({ trafficData }) {
-    // State to track the message for each IP (e.g., "Accepted" or "Blocked" after a response)
     const [responseMessages, setResponseMessages] = useState({});
 
-    // Function to send the request and temporarily display the server response message
     const handleRequest = async (ip, action) => {
         try {
             const response = await axios.post('https://246e-115-92-127-144.ngrok-free.app/warning/', {
@@ -14,40 +13,36 @@ function NotificationCenter({ trafficData }) {
                 action: action
             });
 
-            // Extract message from the response
             const message = response.data.message || `${action} request processed for IP: ${ip}`;
-            
-            // Set the response message for this IP
+
             setResponseMessages(prevMessages => ({
                 ...prevMessages,
                 [ip]: message
             }));
 
-            // Remove the message after 2 seconds
+            // Remove the message and show the original content exactly after 2.8 seconds
             setTimeout(() => {
                 setResponseMessages(prevMessages => {
                     const newMessages = { ...prevMessages };
                     delete newMessages[ip];  // Remove the message for this IP
                     return newMessages;
                 });
-            }, 2000);
+            }, 2800); // Slightly before the full 3 seconds for smooth transition
         } catch (error) {
             console.error(`Error sending ${action} request for IP: ${ip}`, error);
 
-            // Display an error message in case of failure
             setResponseMessages(prevMessages => ({
                 ...prevMessages,
                 [ip]: `Failed to process ${action} for IP: ${ip}`
             }));
 
-            // Remove the message after 2 seconds
             setTimeout(() => {
                 setResponseMessages(prevMessages => {
                     const newMessages = { ...prevMessages };
                     delete newMessages[ip];  // Remove the error message for this IP
                     return newMessages;
                 });
-            }, 2000);
+            }, 2800); // Match the exact time for both transitions
         }
     };
 
@@ -59,7 +54,6 @@ function NotificationCenter({ trafficData }) {
         handleRequest(ip, "block");
     };
 
-    // Filter abnormal traffic data
     const abnormalData = trafficData ? trafficData.filter(item => item.judge === "비정상") : [];
 
     return (
@@ -67,12 +61,13 @@ function NotificationCenter({ trafficData }) {
             {abnormalData.length > 0 ? (
                 abnormalData.map((item, index) => (
                     <div key={index} className="notification">
-                        {responseMessages[item.ip] ? (
-                            // Display the response message if it exists for this IP
-                            <div className="response-message">{responseMessages[item.ip]}</div>
-                        ) : (
-                            // Display normal notification content if no response message
-                            <>
+                        <div className="content-container">
+                            {responseMessages[item.ip] && (
+                                <div className="response-message-overlay">
+                                    {responseMessages[item.ip]}
+                                </div>
+                            )}
+                            <div className={`content ${responseMessages[item.ip] ? 'hidden' : ''}`}>
                                 <div>
                                     <strong>{item.ip}</strong> Try to access <br />
                                     Time: {item.time} <br />
@@ -96,8 +91,8 @@ function NotificationCenter({ trafficData }) {
                                         Block
                                     </Button>
                                 </div>
-                            </>
-                        )}
+                            </div>
+                        </div>
                     </div>
                 ))
             ) : (

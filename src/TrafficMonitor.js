@@ -27,8 +27,8 @@ export default function TrafficMonitor({ trafficData }) {
 
     return (
         <ThemeProvider theme={theme}>
-            <TableContainer component={Paper} sx={{ width: '100%', overflowX: 'auto' }}>
                 <h3>Traffic Monitor</h3>
+            <TableContainer component={Paper} sx={{ width: '100%', overflowX: 'auto' , heigth: '100%'}}>
                 <Table sx={{ minWidth: 50, width: '100%', tableLayout: 'auto' }} size="medium" aria-label="traffic table">
                     <TableHead>
                         <TableRow>

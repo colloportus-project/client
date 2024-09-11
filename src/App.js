@@ -19,7 +19,7 @@ function App() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const trafficResponse = await axios.get('https://246e-115-92-127-144.ngrok-free.app/traffic/', {
+        const trafficResponse = await axios.get('https://19bd-115-92-127-144.ngrok-free.app/traffic/', {
           headers: {
             'ngrok-skip-browser-warning': '69420',
             'Accept': 'application/json',
@@ -28,7 +28,7 @@ function App() {
 
         setTraffic(trafficResponse.data);
 
-        const jammingResponse = await axios.get('https://246e-115-92-127-144.ngrok-free.app/jamming/', {
+        const jammingResponse = await axios.get('https://19bd-115-92-127-144.ngrok-free.app/jamming/', {
           headers: {
             'ngrok-skip-browser-warning': '69420',
             'Accept': 'application/json',
@@ -41,19 +41,19 @@ function App() {
       }
     };
 
-    const interval = setInterval(fetchData, 5000);
-
-    return () => clearInterval(interval);
+    // const interval = setInterval(fetchData, 1000);
+    // => clearInterval(interval)
+    fetchData ();
   }, []);
 
   return (
     <div className="flex-container">
       <div className="flex-item">
         <ThemeProvider theme={theme}>
-          <TrafficMonitor trafficData={trafficData} />
+          <TrafficMonitor  trafficData={trafficData} />
         </ThemeProvider>
       </div>
-      <div className="flex-item vertical-container">
+      <div className="flex-item vertical-container ">
         <Rechart jammingData={jammingData} />
       </div>
       <div className="flex-item">

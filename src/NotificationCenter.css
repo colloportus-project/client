@@ -1,62 +1,49 @@
 .notification-container {
-    padding: 10px;
-    min-height: 200px; /* Ensures space is reserved even if there's no content */
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
+    background-color: #2a2a3d;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.1);
+    /* Subtle glow */
+    color: #ffffff;
 }
 
 .notification {
-    position: relative;
-    padding: 10px;
+    padding: 15px;
     margin-bottom: 10px;
-    border: 1px solid #ccc;
+    background-color: #2d2d42;
+    border: 1px solid #3c3c50;
     border-radius: 8px;
-    background-color: #f9f9f9;
-    transition: opacity 0.2s ease;
+    box-shadow: none;
 }
 
-.content-container {
-    position: relative;
-}
-
-.content {
-    transition: opacity 0.2s ease;
-}
-
-.hidden {
-    opacity: 0; /* Fully hide content when message is shown */
-}
-
-.response-message-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: #fff; /* Solid white background to hide previous content */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 16px;
+/* Access/Block buttons */
+.notification-actions button {
+    border-radius: 5px;
+    padding: 6px 16px;
+    text-transform: uppercase;
     font-weight: bold;
-    color: #333;
-    border-radius: 8px;
-    z-index: 1;
-    opacity: 1;
-    transition: opacity 0.2s ease;
+    margin-right: 8px;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+    box-shadow: none;
 }
 
-.placeholder {
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    background-color: #f9f9f9;
-    min-height: 100px; /* Ensures the height remains consistent */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #888;
-    font-size: 16px;
+.notification-actions .MuiButton-containedPrimary {
+    background-color: #2d73f5;
+    /* Light blue */
+    color: white;
+}
+
+.notification-actions .MuiButton-containedPrimary:hover {
+    background-color: #1a5dc4;
+}
+
+.notification-actions .MuiButton-containedSecondary {
+    background-color: #bdbdbd;
+    /* Subtle gray for the block button */
+    color: black;
+}
+
+.notification-actions .MuiButton-containedSecondary:hover {
+    background-color: #9c9c9c;
 }

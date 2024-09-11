@@ -4,32 +4,42 @@
   width: 100%;
   justify-content: space-between;
   padding: 20px;
+  background-color: #1e1e2f; /* Dark but clean background */
+  color: #e0e0e0; /* Lighter text for better readability */
   box-sizing: border-box;
 }
 
 /* Each section takes 1/3 of the container's width */
 .flex-item {
   flex-basis: 33.33%;
-  padding: 10px;
+  padding: 20px;
+  background: #232336; /* Slightly darker panels */
+  border: 1px solid #38384f;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 255, 255, 0.1); /* Soft, minimal glow */
   box-sizing: border-box;
 }
 
-/* For the middle section where the Jamming chart and map are stacked vertically */
+/* Vertical container for Jamming and Map */
 .vertical-container {
   display: flex;
   flex-direction: column;
+  gap: 20px;
 }
 
+/* Jamming graph and map container */
 .map-container {
-  margin-top: 20px; /* Adds some spacing between the chart and the map */
-  height: 400px; /* Adjust this height based on your desired layout */
+  height: 400px;
   width: 100%;
-  box-sizing: border-box;
+  background: #1b2330;
+  border-radius: 8px;
+  border: 1px solid #38384f;
+  box-shadow: 0px 0px 5px rgba(0, 0, 255, 0.1); /* Minimal blue glow */
 }
 
-/* Ensure that each flex item takes up 100% of the screen width on smaller devices */
 @media (max-width: 1023px) {
   .flex-item {
     flex-basis: 100%;
+    margin-bottom: 20px;
   }
 }

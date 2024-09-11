@@ -1,4 +1,44 @@
-div{
+div {
     display: inline-block;
-    /* padding: auto; */
+}
+
+/* Table styles */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #20202e;
+    /* Darker panel background */
+    border: 1px solid #38384f;
+    box-shadow: none;
+    /* Removing excessive glow */
+}
+
+h3 {
+    color: #ffffff;
+}
+/* Table Header (th) */
+th {
+    background-color: #29293b;
+    color: #ffffff !important;
+    /* Force white text for the table headers */
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #454560;
+}
+
+/* Table Data (td) */
+td {
+    background-color: #252535;
+    color: #ffffff !important;
+    /* Force white text for table data cells */
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #454560;
+}
+
+/* Glow hover effect for rows */
+tr:hover {
+    background-color: #30304b;
+    color: #ffffff !important;
+    /* Ensure white text even on hover */
 }

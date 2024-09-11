@@ -8,7 +8,7 @@ function NotificationCenter({ trafficData }) {
 
     const handleRequest = async (ip, action) => {
         try {
-            const response = await axios.post('https://246e-115-92-127-144.ngrok-free.app/warning/', {
+            const response = await axios.post('https://19bd-115-92-127-144.ngrok-free.app/warning/', {
                 ip: ip,
                 action: action
             });
@@ -78,14 +78,37 @@ function NotificationCenter({ trafficData }) {
                                         color="primary"
                                         size="small"
                                         onClick={() => handleAccess(item.ip)}
+                                        sx={{
+                                            borderRadius: '8px',
+                                            backgroundColor: '#2d73f5',
+                                            textTransform: 'none',
+                                            boxShadow: 'none',
+                                            padding: '6px 16px',
+                                            fontSize: '14px',
+                                            '&:hover': {
+                                                backgroundColor: '#1a5dc4'
+                                            }
+                                        }}
                                     >
-                                        Accept
+                                        Access
                                     </Button>
                                     <Button
                                         variant="contained"
                                         color="secondary"
                                         size="small"
                                         onClick={() => handleBlock(item.ip)}
+                                        sx={{
+                                            borderRadius: '8px',
+                                            backgroundColor: '#e0e0e0',
+                                            color: 'black',
+                                            textTransform: 'none',
+                                            boxShadow: 'none',
+                                            padding: '6px 16px',
+                                            fontSize: '14px',
+                                            '&:hover': {
+                                                backgroundColor: '#bdbdbd'
+                                            }
+                                        }}
                                     >
                                         Block
                                     </Button>

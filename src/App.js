@@ -21,7 +21,7 @@ function App() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const trafficResponse = await axios.get('https://19bd-115-92-127-144.ngrok-free.app/traffic/', {
+        const trafficResponse = await axios.get('https://b8af-115-92-127-144.ngrok-free.app/traffic/', {
           headers: {
             'ngrok-skip-browser-warning': '69420',
             'Accept': 'application/json',
@@ -30,7 +30,7 @@ function App() {
 
         setTraffic(trafficResponse.data);
 
-        const jammingResponse = await axios.get('https://19bd-115-92-127-144.ngrok-free.app/jamming/', {
+        const jammingResponse = await axios.get('https://b8af-115-92-127-144.ngrok-free.app/jamming/', {
           headers: {
             'ngrok-skip-browser-warning': '69420',
             'Accept': 'application/json',
@@ -39,7 +39,7 @@ function App() {
 
         setJamming(jammingResponse.data);
 
-        const jammingLogResponse = await axios.get('https://19bd-115-92-127-144.ngrok-free.app/handle/', {
+        const jammingLogResponse = await axios.get('https://b8af-115-92-127-144.ngrok-free.app/handle/', {
           headers: {
             'ngrok-skip-browser-warning': '69420',
             'Accept': 'application/json',

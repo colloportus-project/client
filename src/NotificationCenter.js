@@ -8,7 +8,7 @@ function NotificationCenter({ trafficData }) {
 
     const handleRequest = async (ip, action) => {
         try {
-            const response = await axios.post('https://19bd-115-92-127-144.ngrok-free.app/warning/', {
+            const response = await axios.post('https://b8af-115-92-127-144.ngrok-free.app/warning/', {
                 ip: ip,
                 action: action
             });
@@ -92,7 +92,7 @@ function NotificationCenter({ trafficData }) {
                                                 }
                                             }}
                                         >
-                                            Access
+                                            Accept
                                         </Button>
                                         <Button
                                             variant="contained"

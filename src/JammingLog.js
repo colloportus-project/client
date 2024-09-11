@@ -26,6 +26,7 @@ function JammingLog({ jammingLogData }) {
                 <ul style={{ paddingLeft: '0' }}>
                     {reversedData.map((row, index) => (
                         <li key={index} style={logEntryStyle}>
+                            <p><strong>Time:</strong> <span style={textStyle}>{row.time}</span></p>
                             <p><strong>Noise Level:</strong> <span style={textStyle}>{row.noise}</span></p>
                             <p><strong>Signal Power:</strong> <span style={textStyle}>{row.signal_power}</span></p>
                             <p><strong>Backup Status:</strong> <span style={backupStyle(row.backup)}>{row.backup === 1 ? 'Backup path is active' : 'No backup path active'}</span></p>

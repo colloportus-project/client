@@ -24,7 +24,7 @@ function Rechart({ jammingData }) {
     const appendData = (newData) => {
         // Append new data point and maintain only the last 20 points for the chart
         dataRef.current = [...dataRef.current, ...newData].slice(-20);
-
+        console.log(jammingData);
         // Set state only with the updated data to trigger chart re-render
         setData([...dataRef.current]);
     };
@@ -44,7 +44,7 @@ function Rechart({ jammingData }) {
     }, [jammingData]);
 
     return (
-        <ResponsiveContainer width="100%" height={500}>
+        <ResponsiveContainer width="100%" height={350}>
             <h3>Jamming Chart</h3>
             <LineChart data={data}>
                 <CartesianGrid strokeDasharray="3 3" />

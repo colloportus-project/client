@@ -71,3 +71,38 @@ strong {
 .btn {
     margin-left: 55px;
 }
+
+.response-message-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #fff; /* Solid white background to hide previous content */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+    border-radius: 8px;
+    z-index: 1;
+    opacity: 1;
+    transition: opacity 0.2s ease;
+}
+
+/* Optional: Add some fading effect */
+.response-message-overlay.hidden {
+    opacity: 0; /* Hide the overlay */
+}
+.content-container {
+    position: relative;
+}
+
+.content {
+    transition: opacity 0.3s ease;
+}
+
+.hidden {
+    opacity: 0; /* Fully hide content when message is shown */
+}
